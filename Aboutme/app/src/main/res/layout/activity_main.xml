@@ -20,23 +20,42 @@
             app:layout_constraintTop_toTopOf="parent" android:id="@+id/name_text"
             android:textColor="@android:color/black" android:textAllCaps="false"
             android:textSize="@dimen/text_size" android:fontFamily="monospace"/>
-    <ImageView
 
+    <ImageView
+            android:id="@+id/star_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/btn_star_big_on"
-            android:id="@+id/star_image" android:contentDescription="@string/yellow_star"
+            android:contentDescription="@string/yellow_star"
             android:layout_marginTop="16dp"/>
+
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:orientation="vertical">
+            <Button
+                    android:id="@+id/done_button"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Click Btn"
+            />
+            <EditText
+                    android:id="@+id/edit_text"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                      android:text="응응"
+            />
+
             <TextView
                     android:text="안녕하세요 자기 소개 입니다."
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/textView"/>
+                    android:layout_height="wrap_content" android:id="@+id/description"
+                    android:visibility="gone"
+
+            />
         </LinearLayout>
+
     </ScrollView>
 
 
