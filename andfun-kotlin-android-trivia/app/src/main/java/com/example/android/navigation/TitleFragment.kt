@@ -34,9 +34,15 @@ import com.example.android.navigation.databinding.FragmentTitleBinding
 // fragment에는 setContentView가 없기 때문에
 // DataBindingUtil.inflate call 해줘야 함.
 class TitleFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-       val binding: FragmentTitleBinding = DataBindingUtil.inflate(
-           inflater, R.layout.fragment_title, container, false
-       )
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: FragmentTitleBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_title, container, false
+        )
+        // attachToParent false, to prevent it from being attached to the ViewGroup
+        return binding.root
+    }
 }
