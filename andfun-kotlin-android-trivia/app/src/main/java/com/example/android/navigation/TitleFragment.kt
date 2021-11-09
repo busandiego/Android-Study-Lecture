@@ -30,25 +30,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.FragmentTitleBinding
 
+
+// fragment에는 setContentView가 없기 때문에
+// DataBindingUtil.inflate call 해줘야 함.
 class TitleFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val binding: FragmentTitleBinding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_title, container, false)
-        binding.playButton.setOnClickListener { v: View ->
-            v.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
-        }
-        setHasOptionsMenu(true)
-        return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.overflow_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
-                || super.onOptionsItemSelected(item)
-    }
+       val binding: FragmentTitleBinding = DataBindingUtil.inflate(
+           inflater, R.layout.fragment_title, container, false
+       )
 }
