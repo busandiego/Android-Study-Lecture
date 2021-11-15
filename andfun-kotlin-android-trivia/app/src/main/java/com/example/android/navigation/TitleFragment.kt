@@ -48,11 +48,24 @@ class TitleFragment : Fragment() {
         }
 
         // 이렇게 가능
-        binding.playButton.setOnClickListener (
+       /* binding.playButton.setOnClickListener (
             Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment)
-        )
+        )*/
+        setHasOptionsMenu(true)
 
         // attachToParent false, to prevent it from being attached to the ViewGroup
         return binding.root
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.overflow_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
+                || super.onOptionsItemSelected(item)
+    }
+
+
 }
