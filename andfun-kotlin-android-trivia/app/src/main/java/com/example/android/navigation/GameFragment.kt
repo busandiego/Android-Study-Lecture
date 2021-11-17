@@ -73,7 +73,7 @@ class GameFragment : Fragment() {
         randomizeQuestions()
 
         // Bind this fragment class to the layout
-        binding.game = this
+        binding.gae = this
 
         // Set the onClickListener for the submitButton
         binding.submitButton.setOnClickListener { view: View ->
