@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.lee.navigationex.databinding.FragmentTitleBinding
 
 
@@ -29,6 +30,7 @@ class TitleFragment : Fragment() {
         /*binding.playButton.setOnClickListener {
             view: View -> view.findNavController().navigate(R.id.action.action_titleFragment_to_gameFragment)
         }*/
+        // NavigationUI
 
 
         return binding.root
