@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         // Show the next dessert
         showCurrentDessert()
     }
-
+ 
     /**
      * Determine which dessert to show.
      */
@@ -137,6 +137,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     /** Lifecycle Methods **/
 
+    // Start Objects that only run when activity on screen
     override fun onStart() {
         super.onStart()
         Timber.i("onStart Called")
@@ -152,6 +153,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         Timber.i("onPause Called")
     }
 
+    // Stop objects that only run when activity on screen; permanently save data
     override fun onStop() {
         super.onStop()
         Timber.i("onStop Called")
