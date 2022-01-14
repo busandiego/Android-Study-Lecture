@@ -168,4 +168,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         super.onRestart()
         Timber.i("onRestart Called")
     }
+
+    // 홈에서 다시 나갔다가 다시 앱으로 돌아올 경우 라이프사이클 순서
+    // onPause -> onStop -> onRestart -> onStart -> onResume
 }
