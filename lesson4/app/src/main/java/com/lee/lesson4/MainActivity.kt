@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
             onDessertClicked()
         }
 
-        dessertTimer = DessertTimer()
+        dessertTimer = DessertTimer(lifecycle)
 
         // Set the TextViews to the right values
         binding.revenue = revenue
@@ -142,11 +142,11 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     /** Lifecycle Methods **/
 
     // Start Objects that only run when activity on screen
-    override fun onStart() {
+    /*override fun onStart() {
         super.onStart()
-        dessertTimer.startTimer()
+       // dessertTimer.startTimer()
         Timber.i("onStart Called")
-    }
+    }*/
 
     override fun onResume() {
         super.onResume()
@@ -159,11 +159,11 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     }
 
     // Stop objects that only run when activity on screen; permanently save data
-    override fun onStop() {
+   /* override fun onStop() {
         super.onStop()
         dessertTimer.stopTimer()
         Timber.i("onStop Called")
-    }
+    }*/
 
     override fun onDestroy() {
         super.onDestroy()
