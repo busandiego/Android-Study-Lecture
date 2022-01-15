@@ -144,6 +144,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     // Start Objects that only run when activity on screen
     override fun onStart() {
         super.onStart()
+        dessertTimer.startTimer()
         Timber.i("onStart Called")
     }
 
@@ -160,6 +161,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     // Stop objects that only run when activity on screen; permanently save data
     override fun onStop() {
         super.onStop()
+        dessertTimer.stopTimer()
         Timber.i("onStop Called")
     }
 
