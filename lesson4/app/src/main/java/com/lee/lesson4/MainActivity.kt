@@ -79,6 +79,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
+        Timber.i("savedInstanceState Called")
     }
 
 
@@ -157,6 +158,11 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     }
 
 
+   /* override fun onStart() {
+        super.onStart()
+        Timber.i("onStart Called")
+    }*/
+
     override fun onResume() {
         super.onResume()
         Timber.i("onResume Called")
@@ -170,7 +176,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     // Stop objects that only run when activity on screen; permanently save data
    /* override fun onStop() {
         super.onStop()
-        dessertTimer.stopTimer()
+    //    dessertTimer.stopTimer()
         Timber.i("onStop Called")
     }*/
 

@@ -85,14 +85,14 @@ class DessertTimer(lifecycle: Lifecycle): DefaultLifecycleObserver {
         super.onStart(owner)
         Timber.i("onStart Called")
         dummyMethod()
-        startTimer()
+        // startTimer()
 
     }
 
     override fun onStop(owner: LifecycleOwner) {
         Timber.i("onStop Called")
         super.onStop(owner)
-        stopTimer()
+        // stopTimer()
 
     }
 
