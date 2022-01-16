@@ -13,6 +13,7 @@ import com.example.android.dessertpusher.DessertTimer
 import com.lee.lesson4.databinding.ActivityMainBinding
 import timber.log.Timber
 
+const val KEY_REVENUE = "key_revenue"
 
 class MainActivity : AppCompatActivity(), LifecycleObserver {
 
@@ -52,7 +53,6 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // TODO (01) Add an info level log statement here
         Timber.i("onCreate Called")
 
         // Use Data Binding to get reference to the views
@@ -64,6 +64,11 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
         dessertTimer = DessertTimer(lifecycle)
 
+        if(savedInstanceState != null){
+           revenue = savedInstanceState.getInt(KEY_REVENUE)
+        }
+
+
         // Set the TextViews to the right values
         binding.revenue = revenue
         binding.amountSold = dessertsSold
@@ -71,6 +76,11 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.imageId)
     }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+    }
+
 
     /**
      * Updates the score when the dessert is clicked. Possibly shows a new dessert.
@@ -139,14 +149,13 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         return super.onOptionsItemSelected(item)
     }
 
-    /** Lifecycle Methods **/
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(KEY_REVENUE, revenue)
 
-    // Start Objects that only run when activity on screen
-    /*override fun onStart() {
-        super.onStart()
-       // dessertTimer.startTimer()
-        Timber.i("onStart Called")
-    }*/
+        Timber.i("onSaveInstanceState Called")
+    }
+
 
     override fun onResume() {
         super.onResume()
