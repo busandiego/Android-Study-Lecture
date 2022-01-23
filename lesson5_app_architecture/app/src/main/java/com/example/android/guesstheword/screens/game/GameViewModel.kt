@@ -7,7 +7,7 @@ class GameViewModel: ViewModel() {
 
     init{
         Log.i("GameViewModel", "GameViewModel init")
-
+        //
     }
 
     override fun onCleared() {
