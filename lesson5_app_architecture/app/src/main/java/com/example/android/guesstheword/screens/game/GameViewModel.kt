@@ -17,7 +17,7 @@ class GameViewModel: ViewModel() {
     init{
         Log.i("GameViewModel", "GameViewModel init")
         resetList()
-
+        nextWord()
     }
 
     override fun onCleared() {
@@ -61,22 +61,22 @@ class GameViewModel: ViewModel() {
     private fun nextWord() {
         //Select and remove a word from the list
         if (wordList.isEmpty()) {
-            gameFinished()
+            // gameFinished()
         } else {
             word = wordList.removeAt(0)
         }
-        updateWordText()
-        updateScoreText()
+       // updateWordText()
+       // updateScoreText()
     }
 
 
     /** Methods for buttons presses **/
-    private fun onSkip() {
+    fun onSkip() {
         score--
         nextWord()
     }
 
-    private fun onCorrect() {
+    fun onCorrect() {
         score++
         nextWord()
     }
