@@ -2,6 +2,7 @@ package com.example.android.guesstheword.screens.game
 
 import androidx.lifecycle.ViewModel
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 
 class GameViewModel: ViewModel() {
 
@@ -12,7 +13,9 @@ class GameViewModel: ViewModel() {
     var word = ""
 
     // The current score
-    var score = 0
+    // var score = 0
+    val score = MutableLiveData<Integer>()
+
 
     init{
         Log.i("GameViewModel", "GameViewModel init")
