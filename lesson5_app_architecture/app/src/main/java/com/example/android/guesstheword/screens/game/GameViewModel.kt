@@ -10,17 +10,18 @@ class GameViewModel: ViewModel() {
     private lateinit var wordList: MutableList<String>
 
     // The current word
-    var word = ""
+    val word = MutableLiveData<String>()
 
     // The current score
     // var score = 0
-    val score = MutableLiveData<Integer>()
+    val score = MutableLiveData<Int>()
 
 
     init{
         Log.i("GameViewModel", "GameViewModel init")
         resetList()
         nextWord()
+        score.value = 0
     }
 
     override fun onCleared() {
@@ -66,7 +67,7 @@ class GameViewModel: ViewModel() {
         if (wordList.isEmpty()) {
             // gameFinished()
         } else {
-            word = wordList.removeAt(0)
+            word.value = wordList.removeAt(0)
         }
        // updateWordText()
        // updateScoreText()
@@ -75,12 +76,12 @@ class GameViewModel: ViewModel() {
 
     /** Methods for buttons presses **/
     fun onSkip() {
-        score--
+       score.value = (score.value)?.minus(1)
         nextWord()
     }
 
     fun onCorrect() {
-        score++
+        score.value = (score.value)?.plus(1)
         nextWord()
     }
 
