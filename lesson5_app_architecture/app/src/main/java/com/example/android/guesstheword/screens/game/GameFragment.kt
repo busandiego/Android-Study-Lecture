@@ -50,9 +50,8 @@ class GameFragment : Fragment() {
                 false
         )
 
-        // viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
-        // 이걸로 바뀜
-        viewModel = ViewModelProviders(this).get(GameViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
+        // viewModel = ViewModelProviders(this).get(GameViewModel::class.java)
 
         binding.correctButton.setOnClickListener {
             viewModel.onCorrect()
