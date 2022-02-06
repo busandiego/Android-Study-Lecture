@@ -56,10 +56,6 @@ class ScoreFragment : Fragment() {
         val scoreFragmentArgs by navArgs<ScoreFragmentArgs>()
 
         viewModelFactory = ScoreViewModelFactory(scoreFragmentArgs.score)
-        // viewModel = ViewModelProvider(this, viewModelFactory).get(ScoreViewModel::class.java)
-     /*   if(viewModelFactory != null){
-            viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::class.java)
-        }*/
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::class.java)
 
         // binding.scoreText.text = ScoreFragmentArgs.fromBundle(arguments).score.toString()
@@ -70,7 +66,19 @@ class ScoreFragment : Fragment() {
             binding.scoreText.text = newScore.toString()
         })*/
 
-        binding.scoreText.text = scoreFragmentArgs.score.toString()
+        viewModel.score.observe(this, Observer { newScore ->
+            binding.scoreText.text = newScore.toString()
+        })
+
+        viewModel.eventPlayAgain.observe(this, Observer { playAgain ->
+            if (playAgain) {
+                findNavController().navigate(ScoreFragmentDirections.actionRestart())
+                viewModel.onPlayAgainComplete()
+            }
+        })
+
+
+        //  binding.scoreText.text = scoreFragmentArgs.score.toString()
         binding.playAgainButton.setOnClickListener { onPlayAgain() }
 
 
