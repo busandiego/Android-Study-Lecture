@@ -58,6 +58,8 @@ class ScoreFragment : Fragment() {
         viewModelFactory = ScoreViewModelFactory(scoreFragmentArgs.score)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScoreViewModel::class.java)
 
+        binding.scoreViewModel = viewModel
+
         // binding.scoreText.text = ScoreFragmentArgs.fromBundle(arguments).score.toString()
         // Get args using by navArgs property delegate
 
@@ -79,7 +81,9 @@ class ScoreFragment : Fragment() {
 
 
         //  binding.scoreText.text = scoreFragmentArgs.score.toString()
-        binding.playAgainButton.setOnClickListener { onPlayAgain() }
+
+        // binding으로 수정
+        // binding.playAgainButton.setOnClickListener { onPlayAgain() }
 
 
 

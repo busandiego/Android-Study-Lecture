@@ -57,13 +57,15 @@ class GameFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
         // viewModel = ViewModelProviders(this).get(GameViewModel::class.java)
 
-        binding.correctButton.setOnClickListener {
+        binding.gameViewModel = viewModel
+
+       /* binding.correctButton.setOnClickListener {
             viewModel.onCorrect()
         }
 
         binding.skipButton.setOnClickListener {
             viewModel.onSkip()
-        }
+        }*/
 
         // updateScoreText()
         // updateWordText()
