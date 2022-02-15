@@ -86,10 +86,10 @@ class GameFragment : Fragment() {
             }
         })
 
-        viewModel.currentTime.observe(this, Observer { newTime ->
+        /*viewModel.currentTime.observe(this, Observer { newTime ->
             Log.d("GameFragment", "newTime >>>> $newTime")
             binding.timerText.text = DateUtils.formatElapsedTime(newTime)
-        })
+        })*/
 
         return binding.root
     }
