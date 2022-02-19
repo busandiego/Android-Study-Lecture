@@ -9,14 +9,29 @@ import android.os.CountDownTimer
 import android.text.format.DateUtils
 import androidx.lifecycle.Transformations
 
+private val CORRECT_BUZZ_PATTERN = longArrayOf(100, 100, 100, 100, 100, 100)
+private val PANIC_BUZZ_PATTERN = longArrayOf(0, 200)
+private val GAME_OVER_BUZZ_PATTERN = longArrayOf(0, 2000)
+private val NO_BUZZ_PATTERN = longArrayOf(0)
+
 class GameViewModel: ViewModel() {
+
+    enum class BuzzType(val pattern: LongArray) {
+        CORRECT(CORRECT_BUZZ_PATTERN),
+        GAME_OVER(GAME_OVER_BUZZ_PATTERN),
+        COUNTDOWN_PANIC(PANIC_BUZZ_PATTERN),
+        NO_BUZZ(NO_BUZZ_PATTERN)
+    }
+
 
     companion object {
         // These represent different important times
         // This is when the game is over
         const val DONE = 0L
+
         // This is the number of milliseconds in a second
         const val ONE_SECOND = 1000L
+
         // This is the total time of the game
         // const val COUNTDOWN_TIME = 60000L
         const val COUNTDOWN_TIME = 10000L
@@ -47,12 +62,12 @@ class GameViewModel: ViewModel() {
     val currentTime: LiveData<Long>
         get() = _currentTime
 
-    val currentTimeString = Transformations.map(currentTime,{ time ->
+    val currentTimeString = Transformations.map(currentTime, { time ->
         DateUtils.formatElapsedTime(time)
     })
 
 
-    init{
+    init {
         Log.i("GameViewModel", "GameViewModel init")
         resetList()
         nextWord()
@@ -110,25 +125,26 @@ class GameViewModel: ViewModel() {
         )
         wordList.shuffle()
     }
+
     /**
      * Moves to the next word in the list
      */
     private fun nextWord() {
         //Select and remove a word from the list
         if (wordList.isEmpty()) {
-          //  _eventGameFinish.value = true
+            //  _eventGameFinish.value = true
             resetList()
         }
         _word.value = wordList.removeAt(0)
 
-       // updateWordText()
-       // updateScoreText()
+        // updateWordText()
+        // updateScoreText()
     }
 
 
     /** Methods for buttons presses **/
     fun onSkip() {
-       _score.value = (_score.value)?.minus(1)
+        _score.value = (_score.value)?.minus(1)
         nextWord()
     }
 
@@ -140,4 +156,5 @@ class GameViewModel: ViewModel() {
     fun onGameFinishComplete() {
         _eventGameFinish.value = false
     }
+
 }
