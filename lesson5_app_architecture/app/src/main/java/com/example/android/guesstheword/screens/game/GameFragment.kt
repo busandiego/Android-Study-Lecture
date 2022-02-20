@@ -91,6 +91,12 @@ class GameFragment : Fragment() {
             binding.timerText.text = DateUtils.formatElapsedTime(newTime)
         })*/
 
+        viewModel.eventBuzz.observe(this, Observer { buzzType ->
+            if(buzzType != GameViewModel.BuzzType.NO_BUZZ){
+                buzz(buzzType.pattern)
+                viewModel.onBuzzComplete()
+            }
+        })
         return binding.root
     }
 
